@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFDev - Digital Agency</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <div class="cursor"></div>
+
+    <header>
+        <div class="brand">
+            <img src="./IMG/Logo EFDev.png" alt="EFDev Logo" class="logo-img">
+            <div class="logo-text">EF<span>Dev</span></div>
+        </div>
+
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#servicos">Serviços</a>
+            <a href="#portfolio">Projetos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Construímos sites modernos que vendem por você</h1>
+            <p>EFDev cria experiências digitais rápidas, bonitas e focadas em conversão.</p>
+            <button onclick="scrollToSection('contato')">Solicitar Projeto</button>
+        </div>
+        <div class="glow"></div>
+    </section>
+
+    <section id="sobre" class="section">
+        <h2 class="reveal">Sobre a EFDev</h2>
+
+        <p class="reveal">
+            A EFDev é uma agência focada em desenvolvimento web moderno, UI/UX e performance,
+            criando soluções digitais para pequenas e médias empresas.
+        </p>
+
+        <div class="team">
+
+            <!-- Esdras Santos -->
+            <div class="member reveal">
+                <img class="avatar" src="https://avatars.githubusercontent.com/u/186848050?v=4" alt="Esdras Santos">
+                <h3>Esdras Santos</h3>
+                <span>CO-Fundador & Desenvolvedor</span>
+            </div>
+
+            <!-- Fábio Telles -->
+            <div class="member reveal">
+                <img class="avatar" src="https://avatars.githubusercontent.com/u/212973109?v=4" alt="Fábio Telles">
+                <h3>Fábio Telles</h3>
+                <span>CO-Fundador & Desenvolvedor</span>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="servicos" class="section dark">
+        <h2 class="reveal">Serviços</h2>
+
+        <div class="grid">
+            <div class="card reveal">
+                <h3>Sites Profissionais</h3>
+                <p>Design moderno com foco em conversão.</p>
+            </div>
+
+            <div class="card reveal">
+                <h3>Landing Pages</h3>
+                <p>Alta performance para vendas rápidas.</p>
+            </div>
+
+            <div class="card reveal">
+                <h3>Sistemas Web</h3>
+                <p>Plataformas completas sob medida.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <h2 class="reveal">Projetos</h2>
+
+        <div class="grid">
+            <div class="card project reveal coming-soon">
+                <div class="coming-soon-text">
+                    <span>Em breve</span>
+                    <p>novos projetos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="section dark">
+        <h2 class="reveal">Contato</h2>
+
+        <form id="contactForm" class="reveal" onsubmit="enviarFormulario(event)">
+            <p class="contact-note">Sua solicitação será preparada como um e-mail para nossa equipe.</p>
+            <input id="contact-name" name="name" type="text" placeholder="Seu nome" required>
+            <input id="contact-email" name="email" type="email" placeholder="Seu e-mail" required>
+            <textarea id="contact-message" name="message" placeholder="Sua mensagem" required></textarea>
+            <button type="submit">Enviar mensagem</button>
+        </form>
+
+        <div class="social reveal">
+            <a href="https://www.instagram.com/efdev.oficial/">Instagram</a>
+            <a href="https://github.com/efdevoficial">GitHub</a>
+            <a href="mailto:efdev.oficial@gmail.com">Gmail</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 EFDev — Todos os direitos reservados</p>
+        <p class="fundadores">Fundadores: Esdras Santos • Fábio Telles</p>
+    </footer>
+
+    <script src="JS/script.js"></script>
+</body>
+
+</html>
