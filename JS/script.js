@@ -11,9 +11,41 @@ function enviarFormulario(e) {
   const email = document.getElementById('contact-email').value.trim();
   const message = document.getElementById('contact-message').value.trim();
 
-  const subject = encodeURIComponent('Solicitação de projeto EFDev');
-  const body = encodeURIComponent(`Olá EFDev, Tenho interesse em um projeto meu nome é ${name} | E-mail: ${email} | Meu pedido: ${message} | Obrigado!!`);
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=efdev.oficial@gmail.com&su=${subject}&body=${body}`;
+  const subject = encodeURIComponent("Solicitação de Projeto - EFDev");
+
+const body = encodeURIComponent(`Olá, equipe EFDev!
+
+Gostaria de solicitar um orçamento para o desenvolvimento de um projeto.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 Nome:
+${name}
+
+📧 E-mail:
+${email}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📝 Descrição do Projeto
+
+${message}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Peço que analisem minha solicitação e, se possível, entrem em contato para conversarmos sobre os detalhes do projeto, prazos e orçamento.
+
+Desde já, agradeço pela atenção.
+
+Atenciosamente,
+
+${name}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Mensagem enviada através do formulário de contato do site da EFDev.
+`);
+
+const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=efdev.oficial@gmail.com&su=${subject}&body=${body}`;
 
   window.open(gmailUrl, '_blank');
 }
