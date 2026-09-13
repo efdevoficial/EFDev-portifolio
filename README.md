@@ -25,13 +25,3 @@ A **EFDev** é uma empresa de tecnologia focada no desenvolvimento de:
 | Fábio Telles | Co-Fundador & Desenvolvedor |
 
 ---
-
-## 📁 Estrutura do Projeto
-
-```bash
-📦 EFDev
- ┣ 📂 img        # Imagens, logos e mídias
- ┣ 📂 css           # Estilos do site
- ┣ 📂 js            # Scripts e interações
- ┣ 📜 index.html    # Página principal
- ┗ 📜 README.md     # Documentação do projeto
