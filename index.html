@@ -236,12 +236,21 @@
     <footer>
         <p>© 2026 EFDev — Todos os direitos reservados</p>
         <p class="fundadores">Fundadores: Esdras Santos • Fábio Telles</p>
-        <span id="version"></span>
+        <span id="app-version">V1.0.0</span>
     </footer>
 
     <script src="JS/script.js"></script>
     <script src="/assets/index-D4b8a9f1.js"></script>
-    <script src="JS/version.js"></script>
+    <script>
+    fetch('./version.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('app-version').textContent = `V${data.version}`;
+        })
+        .catch(error => {
+            console.error('Erro ao carregar versão:', error);
+        });
+</script>
 </body>
 
 </html>

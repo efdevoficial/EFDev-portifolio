@@ -1,0 +1,87 @@
+name: Versionamento Automático
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Verificar commit
+        id: commit
+        run: |
+          MESSAGE=$(git log -1 --pretty=%B)
+
+          echo "Commit detectado:"
+          echo "$MESSAGE"
+
+          if [[ "$MESSAGE" == feat:* ]]; then
+            echo "TYPE=feat" >> $GITHUB_OUTPUT
+          elif [[ "$MESSAGE" == fix:* ]]; then
+            echo "TYPE=fix" >> $GITHUB_OUTPUT
+          elif [[ "$MESSAGE" == master:* ]]; then
+            echo "TYPE=master" >> $GITHUB_OUTPUT
+          else
+            echo "TYPE=none" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Atualizar versão
+        if: steps.commit.outputs.TYPE != 'none'
+        run: |
+          VERSION=$(node -p "require('./version.json').version")
+
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+
+          TYPE="${{ steps.commit.outputs.TYPE }}"
+
+          if [ "$TYPE" = "master" ]; then
+            MAJOR=$((MAJOR + 1))
+            MINOR=0
+            PATCH=0
+
+          elif [ "$TYPE" = "feat" ]; then
+            MINOR=$((MINOR + 1))
+            PATCH=0
+
+          elif [ "$TYPE" = "fix" ]; then
+            PATCH=$((PATCH + 1))
+          fi
+
+          NEW_VERSION="$MAJOR.$MINOR.$PATCH"
+
+          echo "Versão anterior: $VERSION"
+          echo "Nova versão: $NEW_VERSION"
+
+          node -e "
+          const fs = require('fs');
+          const file = './version.json';
+          const data = JSON.parse(fs.readFileSync(file));
+          data.version = '$NEW_VERSION';
+          fs.writeFileSync(file, JSON.stringify(data, null, 2) + '\n');
+          "
+
+      - name: Commitar nova versão
+        if: steps.commit.outputs.TYPE != 'none'
+        run: |
+          git add version.json
+
+          git commit -m "chore: atualiza versão [skip ci]" || echo "Nenhuma alteração"
+
+          git push
