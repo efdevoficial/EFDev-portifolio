@@ -49,15 +49,6 @@ const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=efdev.oficial@gm
 
   window.open(gmailUrl, '_blank');
 }
-
-// cursor follow
-const cursor = document.querySelector(".cursor");
-
-document.addEventListener("mousemove", (e) => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-});
-
 // scroll reveal
 const reveals = document.querySelectorAll(".reveal");
 
